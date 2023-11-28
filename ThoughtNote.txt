@@ -1,0 +1,14 @@
+This is a full stack social media app like twitter.
+In this app a user can register himself and login on the login page.
+After login user will redirected to home page where all the tweets will appear.
+On the home page user can tweet with image or without image.
+User can like tweets of other user's tweet.
+User can send a reply on other user's tweet.
+User can retweet a tweet.
+User can delete a tweet which is posted by him.
+If we click on a tweet we will redirected to tweet detail page where thatr perticular tweet and its all replies will appeared.
+On any tweet if we click on username we will redirected to that user's profile page.
+On profile page we will see user's details we can follow and unfollow that user.
+We can see that user's all tweets on his profile page.
+On the slidebar there is a profile button from where user can go to our profile page.
+On our profile page we can edit our profile and upload a profic pic also.

@@ -1,0 +1,173 @@
+.home-page {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.home-link-col {
+    background-color: #F5F8FA;
+    height: 100vh;
+    position: sticky !important;
+    top: 0;
+    padding: 10px 15px;
+}
+
+.twit-home-logo i {
+    font-size: 40px;
+    margin: 5px 8px;
+    color: #1DA1F2;
+}
+
+.home-link i {
+    color: #14171A;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.home-link {
+    /* background-color: rgb(135, 135, 235); */
+    margin: 10px 5px;
+    display: block;
+    padding: 8px 13px;
+    border-radius: 20px;
+}
+
+.home-link span {
+    color: #14171A;
+    font-size: 18px;
+}
+
+.home-link:hover {
+    background-color: rgba(11, 120, 244, 0.2);
+}
+
+.home-bottom {
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    margin-left: 20px;
+}
+
+.home-profile-pic {
+    margin-right: 8px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: #1DA1F2;
+}
+
+.home-tweet-col {
+    border: 2px solid #E1E8ED;
+    padding: 15px;
+}
+
+.tweet-btn-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.tweet-btn-row b {
+    font-size: 19px;
+}
+
+.tweet-btn-row button {
+    border: 0px;
+    padding: 4px 40px;
+    color: white;
+    background-color: #1DA1F2;
+    border-radius: 5px;
+}
+
+.tweet-card {
+    border: 1px solid #E1E8ED;
+    margin: 0px 5px;
+    padding: 10px;
+}
+
+.tweet-card:hover {
+    background-color: rgba(36, 131, 247, 0.1);
+}
+
+.tweete-detail:hover {
+    cursor: pointer;
+
+}
+
+.tweet-image {
+    width: 95%;
+}
+
+.tweet-image img {
+    width: 100%;
+    border-radius: 4px;
+}
+.tweet-card-col{
+    /* background-color: red; */
+    margin-top: 3px;
+}
+
+.tweet-card-col i {
+    font-size: 22px;
+    cursor: pointer;
+    margin: 8px 0;
+    margin-right: 25px;
+}
+
+.tweet-card-col span {
+    font-size: 20px;
+    margin-right: 3px;
+    font-weight: 500;
+}
+
+.tweet-card-col a {
+    color: #14171A;
+}
+
+.tweet-card-col a:hover {
+    border-bottom: 2px solid #14171A;
+}
+
+.like-tweet {
+    color: rgb(228, 89, 89);
+}
+
+.comment-tweet {
+    color: rgb(51, 51, 238);
+}
+
+.retweet-tweet {
+    color: rgb(27, 146, 27);
+}
+
+.tweet-upload-pic {
+    width: 100%;
+}
+
+.tweet-upload-pic img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.modal-body i {
+    cursor: pointer;
+    font-size: 30px;
+    left: 5%;
+    margin-top: 8px;
+    z-index: 0;
+}
+
+.upload-pic-input {
+    position: absolute;
+    margin-top: 7px;
+    opacity: 0;
+}
+
+.del-btn {
+    width: 100%;
+}
+
+.del-btn i {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -1,0 +1,39 @@
+.form-input{
+    width: 100% !important;
+    margin: 10px 0;
+    outline: none;
+    padding: 8px 8px;
+    border: 1px solid rgb(179, 176, 176);
+    border-radius: 5px;
+}
+
+.logo-col{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1DA1F2;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.form-col{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(249, 242, 242);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 20px 30px;
+}
+
+.log-form{
+    max-width: 1000px;
+    margin: 15vh auto;
+    border-radius: 20px !important;
+  }
+  .logo-col i{
+    color: aliceblue;
+    font-size: 120px;
+  }
+  
