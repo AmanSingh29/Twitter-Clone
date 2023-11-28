@@ -4,6 +4,7 @@ import Slider from "./Slider";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { BASE_URL } from "../serverConfig";
 
 const TweetDetails = () => {
   const { tweetId } = useParams();
@@ -30,7 +31,7 @@ const TweetDetails = () => {
   //to fetch a single tweet details
   const fetchTweetDetails = () => {
     setLoading(true);
-    fetch(`http://localhost:5000/api/tweet/${tweetId}`, {
+    fetch(`${BASE_URL}/api/tweet/${tweetId}`, {
       method: "GET",
       headers: CONFIG,
     })
@@ -52,7 +53,7 @@ const TweetDetails = () => {
 
   //to like the tweet
   const likePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/like`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/like`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -70,7 +71,7 @@ const TweetDetails = () => {
 
   //to dislike the tweet
   const disLikePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/dislike`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/dislike`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -92,7 +93,7 @@ const TweetDetails = () => {
 
   // reply a tweet
   const handleReply = () => {
-    fetch(`http://localhost:5000/api/tweet/${tweetReplyId}/reply`, {
+    fetch(`${BASE_URL}/api/tweet/${tweetReplyId}/reply`, {
       method: "POST",
       headers: CONFIG,
       body: JSON.stringify({
@@ -117,7 +118,7 @@ const TweetDetails = () => {
 
   //to delete tweet
   const deletePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}`, {
       method: "DELETE",
       headers: CONFIG,
     })
@@ -133,7 +134,7 @@ const TweetDetails = () => {
   };
 
   const fetchUserDetails = (Id) => {
-    fetch(`http://localhost:5000/api/user/${Id}`, {
+    fetch(`${BASE_URL}/api/user/${Id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -222,7 +223,7 @@ const TweetDetails = () => {
               <div className="home-profile-pic">
                 <img
                   className="home-profile-pic"
-                  src={`http://localhost:5000/uploads/${tweetUser.profilePicture}`}
+                  src={`${BASE_URL}/uploads/${tweetUser.profilePicture}`}
                 />
               </div>
             </div>
@@ -234,10 +235,7 @@ const TweetDetails = () => {
               <div className="tweete-detail">
                 <p>{fetchTweet.content}</p>
                 <div className="tweet-image">
-                  <img
-                    alt=""
-                    src={`http://localhost:5000/uploads/${fetchTweet.image}`}
-                  />
+                  <img alt="" src={`${BASE_URL}/uploads/${fetchTweet.image}`} />
                 </div>
               </div>
               <span>{tweetLike.length}</span>
@@ -283,7 +281,7 @@ const TweetDetails = () => {
                   <div className="home-profile-pic">
                     <img
                       className="home-profile-pic"
-                      src={`http://localhost:5000/uploads/${name.profilePicture}`}
+                      src={`${BASE_URL}/uploads/${name.profilePicture}`}
                     />
                   </div>
                 </div>

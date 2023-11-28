@@ -6,6 +6,7 @@ import Slider from "./Slider";
 import { useParams, useNavigate } from "react-router-dom";
 import Retweet from "./Retweet";
 import moment from "moment";
+import { BASE_URL } from "../serverConfig";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Profile = () => {
 
   //to fetch all tweetes of a user
   const fetchUserTweets = () => {
-    fetch(`http://localhost:5000/api/${userId}/usertweet`, {
+    fetch(`${BASE_URL}/api/${userId}/usertweet`, {
       method: "GET",
       headers: CONFIG,
     })
@@ -48,7 +49,7 @@ const Profile = () => {
 
   //to delete a tweet
   const deletePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}`, {
       method: "DELETE",
       headers: CONFIG,
     })
@@ -67,7 +68,7 @@ const Profile = () => {
 
   //fetch user details
   const fetchUserDetails = () => {
-    fetch(`http://localhost:5000/api/user/${userId}`, {
+    fetch(`${BASE_URL}/api/user/${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +86,7 @@ const Profile = () => {
 
   //to like a tweet
   const likePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/like`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/like`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -103,7 +104,7 @@ const Profile = () => {
 
   //to dislike a tweet
   const disLikePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/dislike`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/dislike`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -131,16 +132,13 @@ const Profile = () => {
   const uploadProfilePic = async () => {
     let formdata = new FormData();
     formdata.append("file", image);
-    fetch(
-      `http://localhost:5000/api/user/${userDetails.userid}/uploadProfilePic`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("jwt"),
-        },
-        body: formdata,
-      }
-    )
+    fetch(`${BASE_URL}/api/user/${userDetails.userid}/uploadProfilePic`, {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("jwt"),
+      },
+      body: formdata,
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -154,7 +152,7 @@ const Profile = () => {
 
   //update user profile
   const updateProfile = () => {
-    fetch(`http://localhost:5000/api/user/${userId}/`, {
+    fetch(`${BASE_URL}/api/user/${userId}/`, {
       method: "PUT",
       headers: CONFIG,
       body: JSON.stringify({
@@ -180,7 +178,7 @@ const Profile = () => {
 
   //follow a user
   const handleFollow = () => {
-    fetch(`http://localhost:5000/api/user/${userId}/follow`, {
+    fetch(`${BASE_URL}/api/user/${userId}/follow`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -198,7 +196,7 @@ const Profile = () => {
 
   //Unfollow a user
   const handleUnFollow = () => {
-    fetch(`http://localhost:5000/api/user/${userId}/unfollow`, {
+    fetch(`${BASE_URL}/api/user/${userId}/unfollow`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -224,7 +222,7 @@ const Profile = () => {
 
   //reply a tweet
   const handleReply = () => {
-    fetch(`http://localhost:5000/api/tweet/${tweetId}/reply`, {
+    fetch(`${BASE_URL}/api/tweet/${tweetId}/reply`, {
       method: "POST",
       headers: CONFIG,
       body: JSON.stringify({
@@ -245,7 +243,7 @@ const Profile = () => {
 
   //retweet a tweet
   const handleRetweet = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/retweet`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/retweet`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -456,7 +454,7 @@ const Profile = () => {
           <div className="profile-top-content">
             <img
               alt=""
-              src={`http://localhost:5000/uploads/${userData.profilePicture}`}
+              src={`${BASE_URL}/uploads/${userData.profilePicture}`}
             />
             {userId === userDetails.userid ? (
               <div className="profile-buttons">
@@ -532,7 +530,7 @@ const Profile = () => {
                   <img
                     className="home-profile-pic"
                     alt=""
-                    src={`http://localhost:5000/uploads/${userData.profilePicture}`}
+                    src={`${BASE_URL}/uploads/${userData.profilePicture}`}
                   />
                 </div>
               </div>

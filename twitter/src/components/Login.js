@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../serverConfig";
 
 const Login = () => {
   //usestates defines
@@ -21,7 +22,7 @@ const Login = () => {
   //when a user submit a login form
   const logSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/api/auth/login", {
+    fetch(`${BASE_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import Slider from "./Slider";
 import axios from "axios";
 import Retweet from "./Retweet";
 import moment from "moment";
+import { BASE_URL } from "../serverConfig";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Home = () => {
 
   //function to fetch all tweets
   const fetchAllTweets = () => {
-    fetch("http://localhost:5000/api/tweet/", {
+    fetch(`${BASE_URL}/api/tweet/`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("jwt"),
@@ -61,10 +62,7 @@ const Home = () => {
     if (image.imgData) {
       let formdata = new FormData();
       formdata.append("file", image.imgData);
-      const response = await axios.post(
-        "http://localhost:5000/api/uploadFile",
-        formdata
-      );
+      const response = await axios.post(`${BASE_URL}/api/uploadFile`, formdata);
       return response;
     }
   };
@@ -74,7 +72,7 @@ const Home = () => {
     const imgRes = await handleFileUpload();
     console.log(imgRes);
     if (imgRes) {
-      fetch("http://localhost:5000/api/tweet", {
+      fetch(`${BASE_URL}/api/tweet`, {
         method: "POST",
         headers: CONFIG,
         body: JSON.stringify({
@@ -92,7 +90,7 @@ const Home = () => {
           }
         });
     } else {
-      fetch("http://localhost:5000/api/tweet", {
+      fetch(`${BASE_URL}/api/tweet`, {
         method: "POST",
         headers: CONFIG,
         body: JSON.stringify({
@@ -117,7 +115,7 @@ const Home = () => {
 
   //retweet a tweet
   const handleRetweet = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/retweet`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/retweet`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -135,7 +133,7 @@ const Home = () => {
 
   //function to delete a tweet
   const deletePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}`, {
       method: "DELETE",
       headers: CONFIG,
     })
@@ -152,7 +150,7 @@ const Home = () => {
 
   //function to like a tweet
   const likePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/like`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/like`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -170,7 +168,7 @@ const Home = () => {
 
   //function to dislike a tweet
   const disLikePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/dislike`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/dislike`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -196,7 +194,7 @@ const Home = () => {
 
   //reply a tweet
   const handleReply = () => {
-    fetch(`http://localhost:5000/api/tweet/${tweetId}/reply`, {
+    fetch(`${BASE_URL}/api/tweet/${tweetId}/reply`, {
       method: "POST",
       headers: CONFIG,
       body: JSON.stringify({
@@ -377,7 +375,7 @@ const Home = () => {
                   <img
                     className="home-profile-pic"
                     alt=""
-                    src={`http://localhost:5000/uploads/${posts.tweetedBy.profilePicture}`}
+                    src={`${BASE_URL}/uploads/${posts.tweetedBy.profilePicture}`}
                   />
                 </div>
               </div>
@@ -394,10 +392,7 @@ const Home = () => {
                 >
                   <p>{posts.content}</p>
                   <div className="tweet-image">
-                    <img
-                      alt=""
-                      src={`http://localhost:5000/uploads/${posts.image}`}
-                    />
+                    <img alt="" src={`${BASE_URL}/uploads/${posts.image}`} />
                   </div>
                 </div>
                 <span>{posts.likes.length}</span>

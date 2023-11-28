@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./login.css";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../serverConfig";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Signup = () => {
       return;
     }
 
-    fetch("http://localhost:5000/api/auth/register", {
+    fetch(`${BASE_URL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

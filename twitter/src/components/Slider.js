@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../serverConfig";
 
 const Slider = () => {
   const [profilePic, setProfilePic] = useState("./images/default-profile.jpg");
@@ -15,7 +16,7 @@ const Slider = () => {
 
   //fetch user details
   const fetchUserDetails = () => {
-    fetch(`http://localhost:5000/api/user/${userDetails.userid}`, {
+    fetch(`${BASE_URL}/api/user/${userDetails.userid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +55,7 @@ const Slider = () => {
           <img
             className="home-profile-pic"
             alt=""
-            src={`http://localhost:5000/uploads/${profilePic}`}
+            src={`${BASE_URL}/uploads/${profilePic}`}
           />
         </div>
         <div className="home-bottom-detail">

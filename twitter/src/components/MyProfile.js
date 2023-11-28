@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Slider from "./Slider";
 import { useParams, useNavigate } from "react-router-dom";
 import Retweet from "./Retweet";
+import { BASE_URL } from "../serverConfig";
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const MyProfile = () => {
 
   //function to fetch user details
   const fetchUserTweets = () => {
-    fetch(`http://localhost:5000/api/${userDetails.userid}/usertweet`, {
+    fetch(`${BASE_URL}/api/${userDetails.userid}/usertweet`, {
       method: "GET",
       headers: CONFIG,
     })
@@ -45,7 +46,7 @@ const MyProfile = () => {
 
   //function to delete a tweet
   const deletePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}`, {
       method: "DELETE",
       headers: CONFIG,
     })
@@ -62,7 +63,7 @@ const MyProfile = () => {
 
   //fetch user details
   const fetchUserDetails = () => {
-    fetch(`http://localhost:5000/api/user/${userDetails.userid}`, {
+    fetch(`${BASE_URL}/api/user/${userDetails.userid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,7 @@ const MyProfile = () => {
 
   //function to like a tweet
   const likePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/like`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/like`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -99,7 +100,7 @@ const MyProfile = () => {
 
   //function to dislike a tweet
   const disLikePost = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/dislike`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/dislike`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -127,16 +128,13 @@ const MyProfile = () => {
   const uploadProfilePic = async () => {
     let formdata = new FormData();
     formdata.append("file", image);
-    fetch(
-      `http://localhost:5000/api/user/${userDetails.userid}/uploadProfilePic`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("jwt"),
-        },
-        body: formdata,
-      }
-    )
+    fetch(`${BASE_URL}/api/user/${userDetails.userid}/uploadProfilePic`, {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("jwt"),
+      },
+      body: formdata,
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -150,7 +148,7 @@ const MyProfile = () => {
 
   //update user profile
   const updateProfile = () => {
-    fetch(`http://localhost:5000/api/user/${userDetails.userid}/`, {
+    fetch(`${BASE_URL}/api/user/${userDetails.userid}/`, {
       method: "PUT",
       headers: CONFIG,
       body: JSON.stringify({
@@ -184,7 +182,7 @@ const MyProfile = () => {
 
   //reply a tweet
   const handleReply = () => {
-    fetch(`http://localhost:5000/api/tweet/${tweetId}/reply`, {
+    fetch(`${BASE_URL}/api/tweet/${tweetId}/reply`, {
       method: "POST",
       headers: CONFIG,
       body: JSON.stringify({
@@ -205,7 +203,7 @@ const MyProfile = () => {
 
   //retweet a tweet
   const handleRetweet = (postId) => {
-    fetch(`http://localhost:5000/api/tweet/${postId}/retweet`, {
+    fetch(`${BASE_URL}/api/tweet/${postId}/retweet`, {
       method: "POST",
       headers: CONFIG,
     })
@@ -417,7 +415,7 @@ const MyProfile = () => {
           <div className="profile-top-content">
             <img
               alt=""
-              src={`http://localhost:5000/uploads/${userData.profilePicture}`}
+              src={`${BASE_URL}/uploads/${userData.profilePicture}`}
             />
             <div className="profile-buttons">
               <button data-bs-toggle="modal" data-bs-target="#profilePicModal">
@@ -473,7 +471,7 @@ const MyProfile = () => {
                   <img
                     className="home-profile-pic"
                     alt=""
-                    src={`http://localhost:5000/uploads/${userData.profilePicture}`}
+                    src={`${BASE_URL}/uploads/${userData.profilePicture}`}
                   />
                 </div>
               </div>
